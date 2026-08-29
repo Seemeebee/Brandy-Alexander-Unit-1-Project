@@ -19,7 +19,7 @@ function Results() {
   }
 
   return (
-    <div>
+    <main>
       <h1>Your Results</h1>
 
       <p>Your total score is:</p>
@@ -41,7 +41,7 @@ function Results() {
       <button onClick={() => navigate("/journal")}>
         Mood Journal
       </button>
-    </div>
+    </main>
   );
 }
 

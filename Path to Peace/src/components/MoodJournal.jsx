@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function MoodJournal() {
+  const navigate = useNavigate();
+
   const [journal, setJournal] = useState("");
   const [entries, setEntries] = useState([]);
 
@@ -48,13 +51,14 @@ function MoodJournal() {
           <button onClick={() => deleteEntry(index)}>
             Delete
           </button>
-
-          <button onClick={() => navigate("/home")}>
-            Back to Home
-          </button>
-          
         </div>
       ))}
+
+      <br />
+
+      <button onClick={() => navigate("/home")}>
+        Back to Home
+      </button>
     </div>
   );
 }
