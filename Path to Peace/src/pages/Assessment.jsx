@@ -11,6 +11,8 @@ function AnxietyAssessment() {
     setSelectedAnswer(answer);
   };
 
+  //Moves to the next question//
+
   const handleNext = () => {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
@@ -19,6 +21,9 @@ function AnxietyAssessment() {
   };
 
   const showNextButton = () => {
+    
+//Returns null if no answer is selected, otherwise displays the selected answer and a button to go to the next question//
+    
     if (selectedAnswer === "") {
       return null;
     }
@@ -26,7 +31,8 @@ function AnxietyAssessment() {
     return (
       <div>
         <p>You selected: {selectedAnswer}</p>
-
+{/* Displays the selected answer and provides a button to go to the next question */}
+        
         <button onClick={handleNext}>
           Next Question
         </button>
@@ -39,6 +45,7 @@ function AnxietyAssessment() {
       <h1>Anxiety Assessment</h1>
 
       <h2>{question.question}</h2>
+      {/* Displays the answer options */}
 
       {question.options.map((option) => (
         <button
@@ -48,6 +55,7 @@ function AnxietyAssessment() {
           {option}
         </button>
       ))}
+      {/* Shows the next button if an answer is selected */}
 
       {showNextButton()}
     </div>
