@@ -2,27 +2,20 @@
 
 function Question({ question, selectedAnswer, onAnswer }) {
   return (
-  
-    <section>
+    <section className="question-card">
       {/* Displays the question */}
-      <h2>{question.question}</h2>
 
-      {/* Displays all of the answer choices */}
+      <h3>{question.question}</h3>
+      {/* Displays all answer choices */}
+
       {question.options.map((option) => (
-        <label key={option.text}>
-          
-          {/* Creates a radio button for each answer */}
-          <input
-            type="radio"
-            name={`question-${question.id}`}
-            value={option.score}
-            checked={selectedAnswer === option.score}
-            onChange={() => onAnswer(question.id, option.score)}
-          />
-
-          {/* Displays the answer text */}
+        <button
+          className="answer-option"
+          key={option.text}
+          onClick={() => onAnswer(option)}
+        >
           {option.text}
-        </label>
+        </button>
       ))}
     </section>
   );
