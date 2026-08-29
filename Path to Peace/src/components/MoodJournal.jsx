@@ -48,6 +48,11 @@ function MoodJournal() {
           <button onClick={() => deleteEntry(index)}>
             Delete
           </button>
+
+          <button onClick={() => navigate("/home")}>
+            Back to Home
+          </button>
+          
         </div>
       ))}
     </div>
