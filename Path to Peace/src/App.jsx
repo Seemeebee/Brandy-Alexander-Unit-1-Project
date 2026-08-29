@@ -1,9 +1,6 @@
-// Lets us create links between pages
 import { Link } from "react-router-dom";
 
-// Imports the image from the images folder
 import purple from "./images/purple.png";
-
 import "./App.css";
 
 function App() {
