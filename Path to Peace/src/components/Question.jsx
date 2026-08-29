@@ -1,12 +1,17 @@
-//displays one question 
+// Displays one question and its answer choices
 
 function Question({ question, selectedAnswer, onAnswer }) {
   return (
-    <div>
+  
+    <section>
+      {/* Displays the question */}
       <h2>{question.question}</h2>
 
+      {/* Displays all of the answer choices */}
       {question.options.map((option) => (
         <label key={option.text}>
+          
+          {/* Creates a radio button for each answer */}
           <input
             type="radio"
             name={`question-${question.id}`}
@@ -15,10 +20,11 @@ function Question({ question, selectedAnswer, onAnswer }) {
             onChange={() => onAnswer(question.id, option.score)}
           />
 
+          {/* Displays the answer text */}
           {option.text}
         </label>
       ))}
-    </div>
+    </section>
   );
 }
 
