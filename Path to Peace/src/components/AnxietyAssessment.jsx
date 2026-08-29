@@ -1,65 +1,75 @@
-//main component for the anxiety assessment
-
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import questions from "../data/questions";
-import Question from "./Question";
-import Results from "./Results";
 
 function AnxietyAssessment() {
-  const [answers, setAnswers] = useState({});
-  const [submitted, setSubmitted] = useState(false);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState("");
+  const [score, setScore] = useState(0);
+  const [error, setError] = useState("");
 
-  function handleAnswer(questionId, score) {
-    setAnswers({
-      ...answers,
-      [questionId]: score
-    });
+  const navigate = useNavigate();
+
+  // Get the current question
+  const question = questions[currentQuestion];
+
+  // Save the user's answer
+  function handleAnswer(option) {
+    setSelectedAnswer(option);
+    setError("");
   }
 
-  function calculateScore() {
-    return Object.values(answers).reduce(
-      (total, score) => total + score,
-      0
-    );
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-
-    if (Object.keys(answers).length !== questions.length) {
+  // Move to the next question
+  function handleNext() {
+    if (selectedAnswer === "") {
+      setError("Please select an answer before continuing.");
       return;
     }
 
-    setSubmitted(true);
-  }
+    setScore(score + selectedAnswer.score);
 
-  const allQuestionsAnswered =
-    Object.keys(answers).length === questions.length;
-
-  if (submitted) {
-    return <Results score={calculateScore()} />;
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+      setSelectedAnswer("");
+    } else {
+      navigate("/results", {
+        state: { score: score + selectedAnswer.score },
+      });
+    }
   }
 
   return (
-    <div>
-      <h1>Path to Peace</h1>
-      <h2>Anxiety Assessment</h2>
+    <main className="assessment">
+      <h1>Anxiety Assessment</h1>
 
-      <form onSubmit={handleSubmit}>
-        {questions.map((question) => (
-          <Question
-            key={question.id}
-            question={question}
-            selectedAnswer={answers[question.id]}
-            onAnswer={handleAnswer}
-          />
+      <h2>
+        Question {currentQuestion + 1} of {questions.length}
+      </h2>
+
+      <div className="question-card">
+        <h3>{question.question}</h3>
+
+        {question.options.map((option) => (
+          <button
+            className="answer-option"
+            key={option.text}
+            onClick={() => handleAnswer(option)}
+          >
+            {option.text}
+          </button>
         ))}
+      </div>
 
-        <button type="submit" disabled={!allQuestionsAnswered}>
-          Submit Assessment
-        </button>
-      </form>
-    </div>
+      {error && (
+        <p className="error-message">
+          {error}
+        </p>
+      )}
+
+      <button onClick={handleNext}>
+        Next
+      </button>
+    </main>
   );
 }
 
