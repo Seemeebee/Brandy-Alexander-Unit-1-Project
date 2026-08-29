@@ -1,98 +1,82 @@
-// Lets us store information that changes while the user uses the app
+// Imports useState to track changes
 import { useState } from "react";
 
-// Lets us move the user to another page
+// Imports useNavigate to move to another page
 import { useNavigate } from "react-router-dom";
 
-// Gets the questions from our questions file
+// Imports the questions
 import questions from "../data/questions";
 
-// Imports the reusable Question component
+// Imports the Question component
 import Question from "./Question";
 
 function AnxietyAssessment() {
-  // Keeps track of which question the user is on
+  // Tracks the current question
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
-  // Keeps track of the answer the user selected
-  const [selectedAnswer, setSelectedAnswer] = useState("");
+  // Tracks the selected answer
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
 
-  // Keeps track of the user's total score
+  // Tracks the total score
   const [score, setScore] = useState(0);
 
-  // Stores an error message
-  const [error, setError] = useState("");
-
-  // Lets us move to different pages
+  // Lets us move to the Results page
   const navigate = useNavigate();
 
   // Gets the current question
   const question = questions[currentQuestion];
 
-  // Saves the answer selected by the user
-  function handleAnswer(questionId, answerScore) {
+  // Saves the selected answer
+  const handleAnswer = (questionId, answerScore) => {
     setSelectedAnswer(answerScore);
-    setError("");
-  }
+  };
 
-  // Moves the user to the next question
-  function handleNext() {
-    // Makes sure the user selected an answer
-    if (selectedAnswer === "") {
-      setError("Please select an answer before continuing.");
-      return;
-    }
-
+  // Moves to the next question
+  const handleNext = () => {
     // Adds the selected answer to the total score
     const newScore = score + selectedAnswer;
 
-    // Saves the new score
     setScore(newScore);
 
     // Checks if there are more questions
     if (currentQuestion < questions.length - 1) {
-      // Moves to the next question
       setCurrentQuestion(currentQuestion + 1);
 
-      // Clears the selected answer
-      setSelectedAnswer("");
+      // Clears the previous answer
+      setSelectedAnswer(null);
     } else {
-      // Sends the final score to the Results page
+      // Goes to Results after the last question
       navigate("/results", {
         state: { score: newScore },
       });
     }
-  }
+  };
 
   return (
-    <main className="assessment">
+    <div>
       <h1>Anxiety Assessment</h1>
 
-      <h2>
+      {/* Shows what question the user is on */}
+      <p>
         Question {currentQuestion + 1} of {questions.length}
-      </h2>
+      </p>
 
-      {/* Reusable Question child component */}
+      {/* Displays the current question */}
       <Question
         question={question}
         selectedAnswer={selectedAnswer}
         onAnswer={handleAnswer}
       />
 
-      {/* Shows an error if the user did not select an answer */}
-      {error && (
-        <p className="error-message">
-          {error}
-        </p>
+      {/* Shows button after an answer is selected */}
+      {selectedAnswer !== null && (
+        <button onClick={handleNext}>
+          {currentQuestion === questions.length - 1
+            ? "See Results"
+            : "Next Question"}
+        </button>
       )}
-
-      {/* Moves to the next question */}
-      <button onClick={handleNext}>
-        {currentQuestion === questions.length - 1
-          ? "See Results"
-          : "Next"}
-      </button>
-    </main>
+    </div>
   );
 }
 

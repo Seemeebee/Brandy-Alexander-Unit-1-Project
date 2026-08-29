@@ -3,16 +3,24 @@
 function Question({ question, selectedAnswer, onAnswer }) {
   return (
     <section className="question-card">
+
       {/* Displays the question */}
       <h3>{question.question}</h3>
 
-      {/* Displays all answer choices */}
+      {/* Creates a button for each answer */}
       {question.options.map((option) => (
         <button
           className="answer-option"
+
+          // Gives each answer a unique key
           key={option.text}
-          onClick={() => onAnswer(question.id, option.score)}
+
+          // Sends the question id and score when clicked
+          onClick={() =>
+            onAnswer(question.id, option.score)
+          }
         >
+          {/* Displays the answer text */}
           {option.text}
         </button>
       ))}
@@ -20,4 +28,5 @@ function Question({ question, selectedAnswer, onAnswer }) {
   );
 }
 
+// Makes Question available to other files
 export default Question;

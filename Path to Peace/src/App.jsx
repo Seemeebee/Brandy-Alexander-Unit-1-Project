@@ -1,52 +1,53 @@
-import { Link } from "react-router-dom";
+// Imports routing tools
+import { Routes, Route } from "react-router-dom";
 
-import purple from "./images/purple.png";
-import "./App.css";
+// Imports the pages
+import Home from "./pages/Home";
+import About from "./pages/About";
+
+// Imports the components
+import AnxietyAssessment from "./components/AnxietyAssessment";
+import Results from "./components/Results";
+import MoodJournal from "./components/MoodJournal";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <main>
-      <h1>Path to Peace</h1>
+    <>
+      {/* Displays the header */}
+      <Header />
 
-      <h2>Your journey starts here.</h2>
+      {/* Controls which page is displayed */}
+      <Routes>
 
-      <img
-        src={purple}
-        alt="Peaceful purple lake and mountains representing calm and mental wellness"
-      />
+        {/* Home page */}
+        <Route path="/" element={<Home />} />
 
-      <p>
-        Take a short assessment to better understand your anxiety
-        and discover helpful coping strategies.
-      </p>
+        <Route path="/home" element={<Home />} />
 
-      <Link to="/assessment">
-        <button>Start Assessment</button>
-      </Link>
+        {/* Assessment page */}
+        <Route
+          path="/assessment"
+          element={<AnxietyAssessment />}
+        />
 
-      <section>
-        <h2>About Path to Peace</h2>
+        {/* Results page */}
+        <Route path="/results" element={<Results />} />
 
-        <p>
-          Path to Peace is designed to help users understand their
-          anxiety and find helpful resources for managing stress.
-        </p>
+        {/* Mood Journal page */}
+        <Route path="/journal" element={<MoodJournal />} />
 
-        <Link to="/about">
-          <button>About</button>
-        </Link>
-      </section>
+        {/* About page */}
+        <Route path="/about" element={<About />} />
 
-      <section>
-        <h2>Resources</h2>
+      </Routes>
 
-        <p>
-          Explore mental health resources and information for
-          additional support.
-        </p>
-      </section>
-    </main>
+      {/* Displays the footer */}
+      <Footer />
+    </>
   );
 }
 
+// Makes App available to main.jsx
 export default App;
