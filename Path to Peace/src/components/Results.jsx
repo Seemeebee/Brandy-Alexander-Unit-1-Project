@@ -1,7 +1,8 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Results() {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const score = location.state.score;
 
@@ -28,6 +29,18 @@ function Results() {
       <h2>Recommended Resource</h2>
 
       <p>{resource}</p>
+
+      <button onClick={() => navigate("/home")}>
+        Back to Home
+      </button>
+
+      <button onClick={() => navigate("/assessment")}>
+        Restart Assessment
+      </button>
+
+      <button onClick={() => navigate("/journal")}>
+        Mood Journal
+      </button>
     </div>
   );
 }
