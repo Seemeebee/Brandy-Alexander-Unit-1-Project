@@ -1,28 +1,54 @@
-// Imports React Router so we can move between pages
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import AnxietyAssessment from "./components/AnxietyAssessment";
-import Results from "./components/Results";
-import MoodJournal from "./components/MoodJournal";
-import About from "./pages/About";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+// Lets us create links between pages
+import { Link } from "react-router-dom";
+
+// Imports the image from the images folder
+import purple from "./images/purple.png";
+
+import "./App.css";
 
 function App() {
   return (
-    // Allows the app to use React Router
-    <BrowserRouter>
-      <Header />
-      <Routes>
-  <Route path="/home" element={<Home />} />
-  <Route path="/assessment" element={<AnxietyAssessment />} />
-  <Route path="/results" element={<Results />} />
-  <Route path="/journal" element={<MoodJournal />} />
-  <Route path="/about" element={<About />} />
-</Routes>
+    <main>
+      <h1>Path to Peace</h1>
 
-      <Footer />  
-    </BrowserRouter>
+      <h2>Your journey starts here.</h2>
+
+      <img
+        src={purple}
+        alt="Peaceful purple lake and mountains representing calm and mental wellness"
+      />
+
+      <p>
+        Take a short assessment to better understand your anxiety
+        and discover helpful coping strategies.
+      </p>
+
+      <Link to="/assessment">
+        <button>Start Assessment</button>
+      </Link>
+
+      <section>
+        <h2>About Path to Peace</h2>
+
+        <p>
+          Path to Peace is designed to help users understand their
+          anxiety and find helpful resources for managing stress.
+        </p>
+
+        <Link to="/about">
+          <button>About</button>
+        </Link>
+      </section>
+
+      <section>
+        <h2>Resources</h2>
+
+        <p>
+          Explore mental health resources and information for
+          additional support.
+        </p>
+      </section>
+    </main>
   );
 }
 
