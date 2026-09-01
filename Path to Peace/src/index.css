@@ -1,0 +1,207 @@
+/* General page styles */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: white;
+  color: #333;
+}
+
+/* Header */
+
+header {
+  text-align: center;
+  padding: 20px;
+  background-color: #f3efff;
+}
+
+header h1 {
+  margin: 0 0 15px;
+  color: #5c3b8c;
+}
+
+/* Navigation */
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+nav a {
+  color: #333;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #6b46c1;
+}
+
+/* Main content */
+
+main {
+  width: 80%;
+  max-width: 800px;
+  margin: 40px auto;
+}
+
+/* Headings */
+
+h1 {
+  color: #5c3b8c;
+}
+
+h2 {
+  color: #6b46c1;
+}
+
+h3 {
+  color: #555;
+}
+
+/* Sections */
+
+section {
+  margin-bottom: 30px;
+}
+
+/* Cards */
+
+.card {
+  background-color: #f8f6ff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+/* Buttons */
+
+button {
+  background-color: #5c3b8c;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #6b46c1;
+}
+
+/* Assessment */
+
+.question-card {
+  background-color: #f8f6ff;
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.answer-option {
+  display: block;
+  width: 100%;
+  background-color: white;
+  color: #333;
+  border: 1px solid #ccc;
+  margin: 10px 0;
+  text-align: left;
+}
+
+.answer-option:hover {
+  background-color: #f0ebff;
+}
+
+.answer-option.selected {
+  background-color: #e4d9ff;
+  border: 2px solid #6b46c1;
+}
+
+/* Error message */
+
+.error-message {
+  color: #b00020;
+  background-color: #ffe6e6;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Results */
+
+.score-card {
+  background-color: #f3efff;
+  padding: 25px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.score {
+  font-size: 50px;
+  color: #5c3b8c;
+}
+
+/* Mood Journal */
+
+.mood-entry {
+  background-color: #f8f6ff;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+}
+
+/* Footer */
+
+footer {
+  text-align: center;
+  padding: 30px;
+  background-color: #f3efff;
+  margin-top: 40px;
+}
+
+/* Simple animation */
+
+.card,
+.question-card,
+.score-card {
+  animation: appear 0.5s;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Smaller screens */
+
+@media (max-width: 768px) {
+  main {
+    width: 90%;
+  }
+
+  nav {
+    gap: 10px;
+  }
+}
+
+/* Phones */
+
+@media (max-width: 480px) {
+  main {
+    width: 95%;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  button {
+    width: 100%;
+  }
+}

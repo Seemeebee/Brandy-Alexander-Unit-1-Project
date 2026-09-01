@@ -1,0 +1,237 @@
+/* Path to Peace App Styles */
+
+/* Home Page */
+
+.home {
+  text-align: center;
+  padding: 30px;
+}
+
+.home h1 {
+  font-size: 40px;
+  color: #5c3b8c;
+}
+
+.home p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.home-image {
+  width: 100%;
+  max-width: 700px;
+  margin: 20px auto;
+  border-radius: 10px;
+}
+
+
+/* About Page */
+
+.about {
+  padding: 20px;
+}
+
+.about h1 {
+  color: #5c3b8c;
+}
+
+.about p {
+  line-height: 1.6;
+}
+
+
+/* Assessment Page */
+
+.assessment {
+  padding: 20px;
+}
+
+.assessment h1 {
+  text-align: center;
+  color: #5c3b8c;
+}
+
+
+/* Question */
+
+.question {
+  background-color: #f8f6ff;
+  padding: 25px;
+  margin: 20px 0;
+  border-radius: 10px;
+}
+
+.question h2 {
+  color: #5c3b8c;
+}
+
+
+/* Question Options */
+
+.question-option {
+  margin: 10px 0;
+}
+
+.question-option label {
+  display: block;
+  padding: 12px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.question-option label:hover {
+  background-color: #f0ebff;
+}
+
+
+/* Results Page */
+
+.results {
+  text-align: center;
+  padding: 30px;
+}
+
+.results h1 {
+  color: #5c3b8c;
+}
+
+.results-score {
+  font-size: 50px;
+  font-weight: bold;
+  color: #6b46c1;
+}
+
+
+/* Mood Journal */
+
+.mood-journal {
+  padding: 20px;
+}
+
+.mood-journal h1 {
+  color: #5c3b8c;
+}
+
+.mood-form {
+  background-color: #f8f6ff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+
+.mood-form input,
+.mood-form select,
+.mood-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.mood-entry {
+  background-color: #f8f6ff;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+}
+
+
+/* Resources */
+
+.resources {
+  padding: 20px;
+}
+
+.resource-card {
+  background-color: #f8f6ff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+
+/* Error Message */
+
+.error-message {
+  color: #b00020;
+  background-color: #ffe6e6;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+
+/* Buttons */
+
+.primary-button {
+  background-color: #5c3b8c;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.primary-button:hover {
+  background-color: #6b46c1;
+}
+
+.delete-button {
+  background-color: #b00020;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: #8b0018;
+}
+
+
+/* Simple Animation */
+
+.home,
+.about,
+.assessment,
+.results,
+.mood-journal,
+.resources {
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* Phone */
+
+@media (max-width: 480px) {
+  .home h1 {
+    font-size: 30px;
+  }
+
+  .home {
+    padding: 15px;
+  }
+
+  .mood-form {
+    padding: 15px;
+  }
+
+  .primary-button {
+    width: 100%;
+  }
+}
