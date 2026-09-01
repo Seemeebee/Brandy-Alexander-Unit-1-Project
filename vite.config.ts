@@ -3,6 +3,7 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
 
 export default defineConfig({
+  base: "/Brandy-Alexander-Unit-1-Project/",
   plugins: [tailwindcss(), reactRouter()],
   resolve: {
     tsconfigPaths: true,
