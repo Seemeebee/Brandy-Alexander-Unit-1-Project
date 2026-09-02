@@ -15,15 +15,15 @@ function Results() {
   let resource = "";
 
   // Checks the score and gives a recommendation
-  if (score <= 17) {
-    resource = "Try a 5-minute breathing exercise.";
-  } else if (score <= 35) {
-    resource =
-      "Consider talking with someone you trust or a mental health professional.";
-  } else {
-    resource =
-      "Consider reaching out to a mental health professional for additional support. SAMHSA National Helpline: 1-800-662-HELP (4357).";
-  }
+  if (score <= 9) {
+  resource = "Try a 5-minute breathing exercise.";
+} else if (score <= 19) {
+  resource =
+    "Consider talking with someone you trust or a mental health professional.";
+} else {
+  resource =
+    "Consider reaching out to a mental health professional for additional support. SAMHSA National Helpline: 1-800-662-HELP (4357).";
+}
 
   return (
     // Main content of the Results page
