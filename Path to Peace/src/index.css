@@ -7,6 +7,19 @@ body {
   color: #333;
 }
 
+.journal-form input,
+.journal-form select,
+.journal-form textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+}
 /* Header */
 
 header {
