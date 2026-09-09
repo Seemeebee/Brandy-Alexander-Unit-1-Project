@@ -1,6 +1,9 @@
 // Gets the score from the assessment and lets us move between pages
 import { useLocation, useNavigate } from "react-router-dom";
 
+//Button
+import Button from "./Button";
+
 function Results() {
   // Gets information sent from the Assessment page
   const location = useLocation();
@@ -41,19 +44,19 @@ function Results() {
       <p>{resource}</p>
 
       {/* Takes the user back to the Home page */}
-      <button onClick={() => navigate("/home")}>
+      <Button onClick={() => navigate("/home")}>
         Back to Home
-      </button>
+      </Button>
 
       {/* Starts the assessment again */}
-      <button onClick={() => navigate("/assessment")}>
+      <Button onClick={() => navigate("/assessment")}>
         Restart Assessment
-      </button>
+      </Button>
 
       {/* Takes the user to the Mood Journal */}
-      <button onClick={() => navigate("/journal")}>
+      <Button onClick={() => navigate("/journal")}>
         Mood Journal
-      </button>
+      </Button>
     </main>
   );
 }
